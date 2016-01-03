@@ -1,0 +1,9 @@
+bin/
+include/
+lib/
+.DS_STORE
+.Python
+*.py[cod]
+
+digitalmarket.sublime-project
+digitalmarket.sublime-workspace
