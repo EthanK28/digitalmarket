@@ -7,3 +7,6 @@ lib/
 
 digitalmarket.sublime-project
 digitalmarket.sublime-workspace
+src/my.cnf
+db.sqlite3
+settings.py
