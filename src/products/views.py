@@ -1,18 +1,59 @@
-from django.shortcuts import render
+from django.http import Http404
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
+from .models import Product
 
-def detail_view(request):
-    print(request)
+def detail_slug_view(request, slug=None):
+    try:
+        product = get_object_or_404(Product, slug=slug)
+    except Product.MultipleObjectsReturned:
+        product = Product.objects.filter(slug=slug).order_by("-title").first()
+
+    # print(slug)
+    # product = 1
     template = "detail_view.html"
-    context = {}
+    context = {
+        "object": product
+    }
     return render(request, template, context)
+
+
+
+def detail_view(request, object_id=None):
+    product = get_object_or_404(Product, id=object_id)
+
+    template = "detail_view.html"
+    context = {
+        "object": product
+    }
+    return render(request, template, context)
+    # if object_id is not None:
+
+        # try:
+        #     product = Product.objects.get(id=object_id)
+        # except Product.DoesNotExist:
+        #     product = None
+        # template = "detail_view.html"
+        # context = {
+        #     "object": product
+        # }
+        # return render(request, template, context)
+    # else:
+    #     raise Http404
+
+
+
 
 
 def list_view(request):
     # list of items
     print(request)
-    template = "detail_view.html"
-    context = {}
+
+    queryset = Product.objects.all()
+    template = "list_view.html"
+    context = {
+        "queryset": queryset
+    }
     return render(request, template, context)
