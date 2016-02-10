@@ -10,3 +10,6 @@ digitalmarket.sublime-workspace
 src/my.cnf
 db.sqlite3
 settings.py
+/static_cdn
+/.idea
+src/.idea
