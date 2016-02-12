@@ -49,7 +49,7 @@ class Thumbnail(models.Model):
                             height_field= "height",
                             blank=True,
                             null=True,
-                            uplod_to=download_mdedia_location
+                            upload_to=download_mdedia_location
     )
 
     def __str__(self):
@@ -78,6 +78,19 @@ def product_pre_save_reciever(sender, instance, *args, **kwargs):
         # instance.slug = slugify(instance.title)
 
 pre_save.connect(product_pre_save_reciever, sender=Product)
+
+class MyProducts(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL)
+    products = models.ManyToManyField(Product, blank=True)
+
+
+    def __unicode__(self):
+        return "%s" %(self.products.count())
+
+    class Meta:
+        verbose_name = "My Products"
+        verbose_name_plural = "My Products"
+
 
 
 # def product_post_save_reciever(sender, instance, *args, **kwargs):
