@@ -11,7 +11,7 @@ from django.utils.text import slugify
 
 
 def download_mdedia_location(instance, filename):
-    return "%s/%s" %(instance.id, filename)
+    return "%s/%s" %(instance.slug, filename)
 
 class Product(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
@@ -63,6 +63,8 @@ def product_pre_save_reciever(sender, instance, *args, **kwargs):
 
 pre_save.connect(product_pre_save_reciever, sender=Product)
 
+def thumnail_location(instance, filename):
+    return "%s/%s" %(instance.product.slug, filename)
 
 class Thumbnail(models.Model):
     product = models.ForeignKey(Product)
@@ -74,7 +76,7 @@ class Thumbnail(models.Model):
         height_field="height",
         blank=True,
         null=True,
-        upload_to=download_mdedia_location
+        upload_to=thumnail_location
     )
 
 
