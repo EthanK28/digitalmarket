@@ -139,10 +139,10 @@ class ProductListView(ListView):
 	#     context["queryset"] = self.get_queryset()
 	#     return context
 
-	def get_queryset(self, *args, **kwargs):
-		qs =  super(ProductListView, self).get_queryset(**kwargs)
-		# qs =  qs.filter(title__icontains="aaaaaa")
-		return qs
+	# def get_queryset(self, *args, **kwargs):
+	# 	qs =  super(ProductListView, self).get_queryset(**kwargs)
+	# 	# qs =  qs.filter(title__icontains="aaaaaa")
+	# 	return qs
 
 
 
