@@ -6,7 +6,6 @@ from django.conf.urls.static import static
 from .views import (
         TagDetailViev,
         TagListView,
-
         )
 
 urlpatterns = [

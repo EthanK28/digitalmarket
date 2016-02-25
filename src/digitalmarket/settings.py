@@ -76,24 +76,24 @@ WSGI_APPLICATION = 'digitalmarket.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock',
-        'NAME': 'digitalmarket',
-        'USER': 'root',
-        'PASSWORD': '',
-        'PORT': '3306',
-        # 'HOST': 'localhost'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'HOST': '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock',
+#         'NAME': 'digitalmarket',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'PORT': '3306',
+#
+#     }
+# }
 
 # DATABASES = {
 #     'default': {

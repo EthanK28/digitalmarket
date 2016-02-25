@@ -3,11 +3,17 @@
 {% block content %}
 
 
-
+<p>
+    <form method="GET" action="">
+        <input type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
+        <input type="submit" value="Search">
+    </form>
+</p>
     <h2>Products </h2>
     <ul>
         {% for instance in object_list %}
-            <li>{{ instance }} - {{ instance.description }} {{ instance.price }}</li>
+            <li><a href="{{ instance.get_absolute_url }}">{{ instance.title }}</a>  - {{ instance.description }} {{ instance.price }}</li>
+
         {% empty %}
             <li>No Product yet.</li>
         {% endfor %}

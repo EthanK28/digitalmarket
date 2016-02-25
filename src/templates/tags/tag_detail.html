@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <ul>
+        {% for product_instance in object.products.all %}
+
+            <li>
+{#                <a href="{{ product_instance.get_absolute_url }}"></a>#}
+
+{#                {{ product_instance }}#}
+{#                {{ product_instance.thumbnail_set.all }} <br>#}
+{#                {{ product_instance.thumbnail_set.all.first }} <br>#}
+{#                {{ product_instance.thumbnail_set.all.first.media }} <br>#}
+                <a href="{{ product_instance.get_absoulte_url }}">
+                    <img src="{{ product_instance.thumbnail_set.all.first.media.url }}" alt="">
+                </a>
+
+
+            </li>
+
+
+        {% empty %}
+            <li>No Tags yet.</li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock content %}

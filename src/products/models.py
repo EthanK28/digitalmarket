@@ -33,12 +33,15 @@ class Product(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        viewname = "product_detail_slug_view"
+        viewname = "products:detail_slug"
         return reverse(viewname, kwargs={"slug": self.slug})
 
     def get_download(self):
         view_name = "products:download_slug"
         return reverse(view_name, kwargs={"slug": self.slug})
+    """
+    get thumbnails, instance.thumbnail_set.all()
+    """
 
 
 def create_slug(instance, new_slug=None):

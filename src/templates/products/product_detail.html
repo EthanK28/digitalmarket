@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Product: {{ object.title}}</h1>
-<p>{{ object.description }}</p>
-<p>{{ object.price }}</p>
+    <h1>Product: {{ object.title }}</h1>
+    <p>{{ object.description }}</p>
+    <p>{{ object.price }}</p>
 
-{% for img in object.thumbnail_set.all %}
-    <img src="{{ img.media.url }}">
+    {% for img in object.thumbnail_set.all %}
+        <img src="{{ img.media.url }}">
 
-{% endfor %}
+    {% endfor %}
 
 
 
-{% if request.user.is_authenticated and object.media and object in request.user.myproducts.products.all %}
+    {% if request.user.is_authenticated and object.media and object in request.user.myproducts.products.all %}
 
-<p><a href="{{ object.get_download }}">Download</a></p>
+        <p><a href="{{ object.get_download }}">Download</a></p>
 
-{% endif %}
+    {% endif %}
 
 {% endblock content %}
